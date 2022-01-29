@@ -1,0 +1,294 @@
+<html>
+	<head>
+		<title>WhatsApp</title>
+		<link rel="icon" type="image/icon" href="/images/Whatsapp_37229.png">
+		<style>
+			::-webkit-scrollbar {width: 6px; height: 4px; background: #131C21; }
+			::-webkit-scrollbar-thumb { background-color: hsla(0,0%,100%,.16);}
+
+			body {background-color: #090E11;}
+
+			.center_window{
+				background-color: #262D31;
+			    margin: 20 auto;
+			    width: 83.7%;
+			    height: auto;
+			    display: flex;
+			    flex-direction: row;
+				position: relative;}
+
+			.side_bar{
+				position: relative;
+				background-color: #131C21;
+			    width: 30%;
+			    border-right: 1px solid rgba(140,140,140,0.397);
+				display: flex;
+				flex-direction: column;}
+
+			.side_bar_upperpart{
+				background-color: #2A2F32;
+				height: 40px;
+				display: flex;
+				flex-direction: row;
+				padding: 10px 16px;}
+
+			.side_bar_search{
+				background-color: #131C21;
+				height: 50px;
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-bottom: 1px solid rgba(140,140,140,0.397);}
+
+			.search_input{
+				width: 95%;
+				height: 35px;
+				font-size: 15px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: #323739;
+				border-radius: 50px;
+				border: none;
+				color: white;
+				padding: 0px 60px;}
+
+			.side_bar_lowerpart{
+				background-color: #131C21;
+				display: flex;
+				height: 673px;
+				flex-direction: column;
+				overflow-y: auto;
+				overflow-x: hidden;}
+
+			.name_section{
+				height: 75px;
+				width: 405px;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				background-color: #131C21;
+				cursor: pointer;}
+
+			.name_section:hover{
+				background-color: #323739;}
+
+			.name_sec_hr{
+				height: 1px;
+				border-top: 1px solid rgba(140,140,140,0.397);
+				width: 99%;
+				margin: 1px;}
+
+			.name_and_chat{
+				display: flex;
+				flex-direction: column;
+				width: 283px;}
+
+			.name_text{
+				font-size: 16px;
+				font-family: arial;
+				color: #DFE0E2;
+				margin: 10px;
+				margin-top: 15px;
+				margin-bottom: 5px;
+				margin-left: 10px;}
+
+			.chat_text{
+				font-size: 12px;
+				font-family: arial;
+				color: #AAACAE;
+				margin: 10px;
+				margin-top: 0;
+				margin-left: 10px;
+				margin-bottom: 15px;}
+
+			.last_seen_names{
+				font-size: 12px;
+				font-family: arial;
+				color: #AAACAE;
+				margin-top: 0;
+				margin-bottom: 15px;}
+
+			.img_photo{
+				border-radius: 200px;
+				height: 55px;
+				width: 55px;
+				margin-left: 10px;}
+
+			.chat_window{
+				background-color: #0D1418;
+			    /*width: 1015px;*/
+			    display: flex;
+			    flex-direction: column;
+				/*position: relative;*/
+				/*overflow: auto;*/
+				width: 100%;
+				height: 100%;}
+
+			.chat_window_upperpart{
+				display: flex;
+				background-color: #2A2F32;
+				height: 60px;
+				order: 1;
+				width: 100%;}
+
+			.chat_name_text{
+				font-size: 18px;
+				font-family: arial;
+				color: #DFE0E2;
+				margin: 10px;
+				margin-top: 13px;
+				margin-bottom: 0;
+				margin-left: 10px;}
+
+			.chat_last_seen{
+				font-size: 14px;
+				font-family: arial;
+				color: #AAACAE;
+				margin: 10px;
+				margin-top: 0;
+				margin-left: 10px;
+				margin-bottom: 15px;}
+
+			.chat_window_lowerpart{
+				display: flex;
+				background-color: #1D2327;
+				height: 60px;
+				width: 100%;}
+
+			.main_lowerpart{
+				position: relative;
+				order: 3;
+				width: 100%;}
+
+			.main_middlepart{
+			    order: 2;
+				max-height: 663;
+				min-height: 663;
+				overflow: auto;}
+
+			.chat_window_middlepart{
+				position: relative;
+			    display: flex;
+			    flex-direction: column;
+			    width: 100%;
+			    height: 100%;}
+
+			.main{
+				position: relative;
+			    z-index: 100;
+			    height: 100%;
+			    width: 100%;
+			    overflow: hidden;}
+
+			.whatsapp_chat{
+				margin: 10px;
+				border-radius: 7.5px;
+				background-color: #262D31;
+				max-width: 65%;
+				max-height: fit-content;
+				padding: 6px 7px 8px 9px;
+				display: flex;
+				flex-direction: row;}
+
+			.right_color{
+				background-color: #0E6162;}
+
+			.chat_window_text{
+				font-size: 100%;
+				font-family: arial;
+				color: #E5E5E6;
+				margin: auto;}
+
+			.chat_time{
+				font-size: 50%;
+			    font-family: arial;
+			    color: #9B9EA0;
+			    margin: 0;
+			    margin-left: 10;
+			    margin-top: 15;}
+
+			div.chat_box{
+				padding-right: 9%;
+				padding-left: 9%;
+				margin-bottom: 12px;
+				align-items: flex-start;
+				position: relative;
+			    display: flex;
+			    flex-direction: column;}
+
+			div.right_txt{
+				align-items: flex-end;}
+
+			.chat_img{
+				width: 40px;
+				height: 40px;
+				border-radius: 200px;}
+
+			.txt_input{
+				margin-top: 10px;
+				margin-left: 10px;
+				margin-bottom: 10px;
+				width: 100%;
+				height: 40px;
+				font-size: 15px;
+				background-color: #323739;
+				border: none;
+				border-radius: 50px;
+				color: white;
+				padding: 0px 30px;}
+
+			.send{
+				display: flex;
+				flex-direction: row;
+				width: 100%;}
+
+			.account_img_div{
+				flex-grow: 1;}
+
+			.account_img{
+				height: 50px;
+				margin-left: 0px;
+				cursor: pointer;}
+
+			.remain_icon{
+				margin-left: 10px;
+				margin-top: 10px;
+				flex: none;}
+
+			.icon_css{
+				margin-right: 13px;
+				cursor: pointer;}
+
+			.chat_icon{
+				margin-left: 20px;
+				margin-top: 18px;
+				cursor: pointer;}
+
+			.chat_account_div{
+				margin-right: 6px;
+				margin-top: 5px;
+				margin-left: 15px;}
+
+			.last_seen{
+				display: flex;
+				flex-direction: column;
+				width: 82%;}
+
+			.send_button{
+				width: 35px;
+				height: 35px;
+				margin-left: 18px;
+				margin-right: 10px;
+				margin-top: 12px;
+				outline: none;
+				cursor: pointer;}
+
+
+		</style>
+	</head>
+	<body>
+		<div id="center_window" class="center_window">
+		
+		

@@ -1,0 +1,66 @@
+			<script>
+				var last_seen_lst = ["online", "click here for group info", "last seen today at 9:45 am", "click here for group info", "last seen today at 5:38 pm", "last seen yesterday at 8:05 pm", "online", "last seen today at 12:12 am", "click here for group info", "last seen 16/10/21 at 9:12 pm", "last seen today at 8:19 am", "last seen today at 11:28 am", "last seen today at 4:24 pm", "last seen today at 2:53 pm", "last seen today at 3:47 pm",  "online"]
+
+				function load_things(id_name){
+					document.getElementById("chatwindow_name").innerHTML = document.getElementById("b"+id_name).innerHTML;
+					// document.getElementById("chatwindow_lastseen").innerHTML = last_seen_lst[i];
+
+					document.getElementById("main_chatwindow").style.visibility = "visible";
+
+					var enter_clicked = document.getElementById("chat");
+					enter_clicked.addEventListener("keyup", function (event) {
+						if (event.keyCode === 13) {
+							 document.getElementById('button').click();
+						}
+					})
+					document.getElementById('button').onclick = function send_msg() {
+						var time = new Date();
+						send_time = time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+						var y = enter_clicked.value;
+						if (y != '') {
+							var xhttp1 = new XMLHttpRequest();
+							xhttp1.open("GET", "/message-send?message="+y+"&name_id="+id_name+"&send_time="+send_time, true);
+							xhttp1.send();
+
+							document.getElementById("chat_"+id_name).innerHTML += '<div class="chat_box right_txt"><div class="whatsapp_chat right_color"><p class="chat_window_text">'+ y +'</p><p class="chat_time">'+send_time+'</p></div></div>';
+									
+							y = document.getElementById('chat').value = ''
+						}
+						var chat_added = document.getElementById("chat_scroller");
+						chat_added.scrollTop = chat_added.scrollHeight;
+					}
+
+					var xhttp0 = new XMLHttpRequest();
+					xhttp0.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							document.getElementById('chat_scroller').innerHTML = this.responseText;
+						}
+					};
+					xhttp0.open("GET", "/contacts?contact_name="+id_name, true);
+					xhttp0.send();
+				}
+				
+				function search_name(){
+					let input = document.getElementById('Search').value
+					input = input.toLowerCase();
+					let name_section = document.getElementsByClassName('name_section');
+					let name_lst = document.getElementsByClassName('name_text');
+					let line = document.getElementsByClassName('name_sec_hr');
+
+					for (i = 0; i < name_lst.length; i++) { 
+						if (!name_lst[i].innerHTML.toLowerCase().includes(input)) {
+							name_section[i].style.display="none";
+							line[i].style.display="none";
+						}
+						else {
+							name_section[i].style.display="block";
+							name_section[i].style.display="flex";
+							line[i].style.display="block";
+						}
+					}
+				}
+
+			</script>
+		</div>
+	</body>
+</html>
